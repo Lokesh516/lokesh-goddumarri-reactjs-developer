@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import styles from './Login.module.css';
 
 const Login = () => {
-  // Form input states
+  // State for form inputs and error message
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Authentication and navigation
+  // Access login function from auth context
   const { login } = useAuth();
+
+  // Set theme and navigation
+  const { setTheme } = useTheme();
   const navigate = useNavigate();
 
-  // Handles login form submission
+  // On component mount, enforce theme1 and apply corresponding body class
+  useEffect(() => {
+    setTheme('theme1');
+    document.body.className = 'theme1';
+  }, [setTheme]);
+
+  // Handle login form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (login(email, password)) {
-      navigate('/'); // Redirect on success
+      navigate('/');
     } else {
-      setError('Invalid email or password'); // Set error on failure
+      setError('Invalid email or password');
     }
   };
 
@@ -28,11 +38,11 @@ const Login = () => {
       <div className={styles.loginContainer}>
         <h2 className={styles.loginHeading}>Login</h2>
 
-        {/* Show error if login fails */}
+        {/* Display error message if any */}
         {error && <div className={styles.error}>{error}</div>}
-        
+
+        {/* Login form */}
         <form onSubmit={handleSubmit} className={styles.loginForm}>
-          {/* Email input */}
           <input
             type="email"
             placeholder="Email"
@@ -41,8 +51,7 @@ const Login = () => {
             required
             className={styles.inputField}
           />
-          
-          {/* Password input */}
+
           <input
             type="password"
             placeholder="Password"
@@ -51,8 +60,7 @@ const Login = () => {
             required
             className={styles.inputField}
           />
-          
-          {/* Login button */}
+
           <button type="submit" className={styles.loginButton}>
             Login
           </button>

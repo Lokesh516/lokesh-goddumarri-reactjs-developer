@@ -33,6 +33,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   // Logs user out and navigates to login screen
   const logout = () => {
     setCurrentUser(null);
+  document.body.className = 'theme1';
+  localStorage.setItem('theme', 'theme1');
     navigate('/login');
   };
 
