@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
  * If not, redirects to the login page.
  */
 const ProtectedRoute = () => {
-  const { currentUser } = useAuth(); // Check user authentication state
+  const { currentUser } = useAuth();
   
   return currentUser ? <Outlet /> : <Navigate to="/login" replace />;
 };

@@ -3,16 +3,28 @@ import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
-// Renders the top navigation bar with theme and auth options
-const Header = () => {
-  const { theme, setTheme } = useTheme();           // Access current theme and updater
-  const { currentUser, logout } = useAuth();        // Access auth state and logout function
+type HeaderProps = {
+  toggleSidebar?: () => void;
+};
+
+const Header = ({ toggleSidebar }: HeaderProps) => {
+  const { theme, setTheme } = useTheme();
+  const { currentUser, logout } = useAuth();
 
   return (
     <header className={`${styles.header} ${theme}`}>
-      <div className={styles.logo}>MyThemedApp</div> {/* Logo/branding */}
+      <div className={styles.headerTop}>
+        <div className={styles.logo}>MyThemedApp</div>
 
-      {/* Navigation links shown unless dark theme is active */}
+        {/* Show hamburger only for theme2 */}
+        {theme === 'theme2' && toggleSidebar && (
+          <button className={styles.hamburger} onClick={toggleSidebar}>
+            ☰
+          </button>
+        )}
+      </div>
+
+      {/* Show nav links only for non-theme2 */}
       {theme !== 'theme2' && (
         <nav className={styles.navLinks}>
           <Link to="/">Home</Link>
@@ -22,7 +34,7 @@ const Header = () => {
       )}
 
       <div className={styles.headerControls}>
-        {/* Theme switcher */}
+        {/* Theme selection dropdown */}
         <div className={styles.themeSelector}>
           <select
             value={theme}
@@ -35,10 +47,10 @@ const Header = () => {
           </select>
         </div>
 
-        {/* Show logout button only if user is logged in */}
+        {/* Show logout if user is logged in */}
         {currentUser && (
-          <button 
-            onClick={logout} 
+          <button
+            onClick={logout}
             className={`${styles.logoutButton} ${theme}`}
           >
             Logout

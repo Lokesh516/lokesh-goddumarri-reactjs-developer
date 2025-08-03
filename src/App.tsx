@@ -8,19 +8,21 @@ import { useTheme } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import styles from './App.module.css';
+import { useState } from 'react';
 
 const App = () => {
   const { theme } = useTheme(); // Get current theme from context
 
   return (
-    <AuthProvider> {/* Provides authentication to the app */}
-      <div className={theme}> {/* Root wrapper with theme class */}
+    <AuthProvider> {/* Provides authentication context to the app */}
+      <div className={theme}> {/* Root element with current theme class */}
         <Routes>
-          {/* Public route */}
+          {/* Public login route */}
           <Route path="/login" element={<Login />} />
-          
-          {/* Protected routes */}
+
+          {/* Protected routes wrapper */}
           <Route element={<ProtectedRoute />}>
+            {/* Layout with header and optional sidebar */}
             <Route element={<LayoutWithHeader />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -28,7 +30,7 @@ const App = () => {
             </Route>
           </Route>
 
-          {/* Redirect unknown routes */}
+          {/* Catch-all route redirects to Home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
@@ -36,16 +38,24 @@ const App = () => {
   );
 };
 
-// Layout component with header and optional sidebar
+// Layout component containing Header and optional sidebar for theme2
 const LayoutWithHeader = () => {
   const { theme } = useTheme();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Toggles sidebar visibility (only for theme2)
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
 
   return (
     <>
-      <Header /> {/* Shared header */}
+      {/* Top navigation bar with hamburger toggle */}
+      <Header toggleSidebar={toggleSidebar} />
+
       <div className={styles.layoutContainer}>
-        {/* Sidebar visible only in theme2 */}
-        {theme === 'theme2' && (
+        {/* Sidebar shown only in theme2 when open */}
+        {theme === 'theme2' && isSidebarOpen && (
           <aside className={styles.sidebar}>
             <nav className={styles.sidebarNav}>
               <Link to="/" className={styles.sidebarLink}>Home</Link>
@@ -54,9 +64,16 @@ const LayoutWithHeader = () => {
             </nav>
           </aside>
         )}
-        {/* Main content area */}
-        <main className={theme === 'theme2' ? styles.mainWithSidebar : styles.main}>
-          <Outlet /> {/* Render active child route */}
+
+        {/* Main content area; adjusts layout based on sidebar state */}
+        <main
+          className={
+            theme === 'theme2' && isSidebarOpen
+              ? styles.mainWithSidebar
+              : styles.main
+          }
+        >
+          <Outlet /> {/* Renders matched child route */}
         </main>
       </div>
     </>

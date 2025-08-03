@@ -20,8 +20,8 @@ This is a multi-theme React application built as part of a frontend technical as
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/Lokesh-Goddumarri_ReactJS-Developer.git
-cd Lokesh-Goddumarri_ReactJS-Developer
+git clone https://github.com/Lokesh516/lokesh-goddumarri-reactjs-developer.git
+cd lokesh-goddumarri-reactjs-developer
 ```
 
 ### 2. Install Dependencies
@@ -37,6 +37,19 @@ npm run dev
 ```
 
 Then open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 🔐 Demo Login Credentials (Same for Local & Live)
+
+Use the following credentials to log in:
+
+```
+Email: test@example.com  
+Password: demo123
+```
+
+These are defined in `src/data/mockUsers.json`. You must log in to access pages like **Home**, **About**, and **Contact**.
 
 ---
 
@@ -56,19 +69,6 @@ Then open [http://localhost:5173](http://localhost:5173) in your browser.
 - **src/types/** – Type definitions for product structure  
 - **src/App.tsx** – App-level routing and layout  
 - **src/main.tsx** – Application entry point
-
----
-
-## Mock Credentials
-
-You can log in using the credentials defined in `src/data/mockUsers.json`. Example:
-
-```json
-{
-  "email": "test@example.com",
-  "password": "demo123"
-}
-```
 
 ---
 
