@@ -1,0 +1,64 @@
+/* Centers the login content in the viewport with theme background */
+.loginWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: var(--bg-color);
+}
+
+/* Styled container for the login form */
+.loginContainer {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Heading text inside the login card */
+.loginHeading {
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Vertical layout and spacing for the form */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input styling with theme variables */
+.inputField {
+  padding: 0.75rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+/* Primary login button with smooth interaction */
+.loginButton {
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+/* Error message box with light red background */
+.error {
+  color: #e74c3c;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 4px;
+}

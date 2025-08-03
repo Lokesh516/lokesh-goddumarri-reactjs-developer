@@ -1,0 +1,76 @@
+/* Import playful font for Theme 3 */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* Theme 1: Light & Minimal */
+body.theme1 {
+  --bg-color: #f9f9f9;
+  --text-color: #222;
+  --primary-color: #3498db;
+  --secondary-color: #f0f0f0;
+  --font-family: Arial, sans-serif;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --header-bg: #ffffff;
+  --header-text: #222;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+/* Theme 2: High-contrast Dark Mode */
+body.theme2 {
+  --bg-color: #121212;
+  --text-color: #f8f9fa;
+  --primary-color: #bb86fc;
+  --secondary-color: #1e1e1e;
+  --font-family: Georgia, serif;
+  --card-bg: #1e1e1e;
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --header-bg: #1f1f1f;
+  --header-text: #ffffff;
+  --sidebar-bg: #1a1a1a;
+  --sidebar-text: #e0e0e0;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+/* Theme 3: Bright and Playful */
+body.theme3 {
+  --bg-color: #fff8f0;
+  --text-color: #333;
+  --primary-color: #ff6b6b;
+  --secondary-color: #ffe66d;
+  --font-family: 'Pacifico', cursive;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --header-bg: #ff6b6b;
+  --header-text: #fff;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+/* Base styles shared across themes */
+body {
+  margin: 0;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Link styling using theme color */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Apply text color to common elements */
+p, h1, h2, h3, h4, h5, h6, li, span {
+  color: var(--text-color);
+}

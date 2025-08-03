@@ -1,0 +1,36 @@
+/* Container with padding and space below header */
+.container {
+  padding: 2rem;
+  margin-top: 80px;
+}
+
+/* Main title styled with theme color */
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+/* Grid layout for product cards */
+.productsGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Common styles for loading and error text */
+.loading,
+.error {
+  margin-top: 80px;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Adjust grid layout on smaller screens */
+@media (max-width: 768px) {
+  .productsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+}

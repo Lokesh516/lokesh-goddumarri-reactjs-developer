@@ -1,0 +1,39 @@
+/* Container with padding and centered layout */
+.container {
+  padding: 2rem;
+  margin-top: 80px; /* Leaves space for fixed header */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main heading styled with theme color */
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+/* Grid layout for contact details */
+.contactInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Readable paragraph styling */
+.contactInfo p {
+  line-height: 1.6;
+}
+
+/* Slightly larger font for website link */
+.website {
+  font-size: 1.1rem;
+}
+
+/* Responsive: stack columns on smaller screens */
+@media (max-width: 768px) {
+  .contactInfo {
+    grid-template-columns: 1fr;
+  }
+}
