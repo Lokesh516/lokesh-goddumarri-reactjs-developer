@@ -29,9 +29,9 @@ const Header = () => {
             onChange={(e) => setTheme(e.target.value as 'theme1' | 'theme2' | 'theme3')}
             className={styles.select}
           >
-            <option value="theme1">Light</option>
-            <option value="theme2">Dark</option>
-            <option value="theme3">Colorful</option>
+            <option value="theme1">Theme 1</option>
+            <option value="theme2">Theme 2</option>
+            <option value="theme3">Theme 3</option>
           </select>
         </div>
 

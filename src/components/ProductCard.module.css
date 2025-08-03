@@ -1,3 +1,15 @@
+/* Container for spacing between cards on small screens */
+.cardWrapper {
+  margin-bottom: 1rem;
+}
+
+/* Remove spacing between cards when layout changes on wider screens */
+@media (min-width: 768px) {
+  .cardWrapper {
+    margin-bottom: 0;
+  }
+}
+
 /* Common card container with padding, rounded corners, and shadow */
 .card {
   padding: 0.5rem;
